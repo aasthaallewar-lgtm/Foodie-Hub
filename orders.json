@@ -1,0 +1,23 @@
+[
+  {
+    "orderId": "ORD-SAMPLE-0001",
+    "date": "2026-09-28T13:45:00.000Z",
+    "customer": {
+      "name": "Sample Customer",
+      "mobile": "9876543210",
+      "email": "sample@example.com",
+      "address": "12, MG Road, Pune, Maharashtra - 411001"
+    },
+    "items": [
+      { "id": 1,  "name": "Margherita Pizza", "price": 249, "qty": 2, "image": "images/margherita-pizza.jpg" },
+      { "id": 21, "name": "Cold Coffee",      "price": 119, "qty": 1, "image": "images/cold-coffee.jpg" }
+    ],
+    "subtotal": 617,
+    "coupon": "SAVE10",
+    "discount": 61.7,
+    "total": 555.3,
+    "payment": { "method": "Cash On Delivery", "detail": "" },
+    "status": "Order Placed",
+    "sample": true
+  }
+]

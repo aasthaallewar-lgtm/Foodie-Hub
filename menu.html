@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  menu.html  -  FOOD MENU PAGE
+  Online Food Ordering System (Semester 3 Mini Project)
+  Products loaded from data/products.json with Fetch API; search, category filter and sort.
+  =====================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | FoodieHub</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (JSON.parse(localStorage.getItem("fos_theme")) === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION BAR ================= -->
+  <header class="navbar">
+    <nav class="container nav-container" aria-label="Main navigation">
+      <a href="index.html" class="logo"><img src="images/logo.svg" alt=""><span class="logo-text">Foodie<span>Hub</span></span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <a href="cart.html" class="icon-btn" aria-label="View cart">🛒<span class="cart-count" id="cartCount">0</span></a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page banner -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Our Menu</h1>
+        <p>Search, filter and add your favourite dishes to the cart</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Search box + sort dropdown -->
+        <div class="menu-toolbar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="search" id="searchInput" placeholder="Search food by name..." aria-label="Search food by name">
+          </div>
+          <select id="sortSelect" class="sort-select" aria-label="Sort products">
+            <option value="default">Sort: Recommended</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
+
+        <!-- Category filter buttons (data-category matches "category" in products.json) -->
+        <div class="category-filters" id="categoryFilters">
+          <button class="filter-btn active" data-category="All">🍽️ All</button>
+          <button class="filter-btn" data-category="Pizza">🍕 Pizza</button>
+          <button class="filter-btn" data-category="Burger">🍔 Burger</button>
+          <button class="filter-btn" data-category="Chinese">🍜 Chinese</button>
+          <button class="filter-btn" data-category="South Indian">🫓 South Indian</button>
+          <button class="filter-btn" data-category="Beverages">🥤 Beverages</button>
+        </div>
+
+        <p class="result-info" id="resultInfo"></p>
+
+        <!-- Product cards are rendered here by menu.js -->
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logo.svg" alt=""><span class="logo-text">Foodie<span>Hub</span></span></a>
+        <p>Fresh, tasty food delivered fast. A Semester 3 mini project built with HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="orders.html">My Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="menu.html?category=Pizza">Pizza</a></li>
+          <li><a href="menu.html?category=Burger">Burger</a></li>
+          <li><a href="menu.html?category=Chinese">Chinese</a></li>
+          <li><a href="menu.html?category=South%20Indian">South Indian</a></li>
+          <li><a href="menu.html?category=Beverages">Beverages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 12, MG Road, Pune 411001</li>
+          <li>📞 +91 98765 43210</li>
+          <li>✉️ support@foodiehub.in</li>
+          <li>🕒 10:00 AM – 11:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year">2026</span> FoodieHub &middot; Online Food Ordering System &middot; Semester 3 Mini Project<br>
+      <small>Food photos from Wikimedia Commons under Creative Commons licences &middot; <a href="images/CREDITS.md">Image credits</a></small>
+    </div>
+  </footer>
+
+  <!-- Back to top button (shown by app.js after scrolling) -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="js/app.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

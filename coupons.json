@@ -1,0 +1,19 @@
+[
+  {
+    "code": "SAVE10",
+    "discount": 10,
+    "description": "Get 10% off on your order"
+  },
+  {
+    "code": "FOOD20",
+    "discount": 20,
+    "minOrder": 499,
+    "description": "Get 20% off on orders above ₹499"
+  },
+  {
+    "code": "WELCOME50",
+    "discountFlat": 50,
+    "minOrder": 199,
+    "description": "Flat ₹50 off on orders above ₹199"
+  }
+]

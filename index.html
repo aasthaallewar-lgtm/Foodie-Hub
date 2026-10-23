@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  index.html  -  HOME PAGE
+  Online Food Ordering System (Semester 3 Mini Project)
+  Sections: Sticky navbar, Hero banner, Why choose us, Featured foods
+            (loaded from data/products.json), Special offers, CTA, Footer
+  =====================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FoodieHub - order pizza, burgers, Chinese, South Indian food and beverages online.">
+  <title>FoodieHub Project | Online Food Ordering System</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <!-- Google Font (falls back to system fonts when offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply saved theme before the page paints (prevents a white flash in dark mode) -->
+  <script>
+    try { if (JSON.parse(localStorage.getItem("fos_theme")) === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION BAR ================= -->
+  <header class="navbar">
+    <nav class="container nav-container" aria-label="Main navigation">
+      <a href="index.html" class="logo"><img src="images/logo.svg" alt=""><span class="logo-text">Foodie<span>Hub</span></span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <a href="cart.html" class="icon-btn" aria-label="View cart">🛒<span class="cart-count" id="cartCount">0</span></a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO BANNER ================= -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <span class="hero-tag">🔥 Hot &amp; fresh in 30 minutes</span>
+          <h1>Delicious Food,<br>Delivered to Your Door</h1>
+          <p>Order your favourite pizzas, burgers, Chinese and South Indian dishes from FoodieHub. Fresh ingredients, great taste and fast delivery.</p>
+          <div class="hero-buttons">
+            <a href="menu.html" class="btn btn-light">Order Now &rarr;</a>
+            <a href="#offers" class="btn btn-outline">View Offers</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>30</strong>Dishes &amp; drinks</div>
+            <div><strong>5</strong>Categories</div>
+            <div><strong>4.5 ⭐</strong>Avg. rating</div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/hero.jpg" alt="An Indian thali with curries, rice, raita and roti">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SHOP BY CATEGORY =================
+         Each card opens menu.html with that category already selected
+         (menu.js reads the ?category= value from the URL). -->
+    <section class="section" style="padding-bottom:0">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Shop by <span>Category</span></h2>
+          <p>From cheesy pizzas to cool beverages</p>
+        </div>
+        <div class="category-grid">
+          <a href="menu.html?category=Pizza" class="category-card reveal">
+            <img src="images/margherita-pizza.jpg" alt="Pizza" loading="lazy">
+            <span>🍕 Pizza</span>
+          </a>
+          <a href="menu.html?category=Burger" class="category-card reveal">
+            <img src="images/double-burger.jpg" alt="Burger" loading="lazy">
+            <span>🍔 Burger</span>
+          </a>
+          <a href="menu.html?category=Chinese" class="category-card reveal">
+            <img src="images/hakka-noodles.jpg" alt="Chinese" loading="lazy">
+            <span>🍜 Chinese</span>
+          </a>
+          <a href="menu.html?category=South%20Indian" class="category-card reveal">
+            <img src="images/masala-dosa.jpg" alt="South Indian" loading="lazy">
+            <span>🫓 South Indian</span>
+          </a>
+          <a href="menu.html?category=Beverages" class="category-card reveal">
+            <img src="images/virgin-mojito.jpg" alt="Beverages" loading="lazy">
+            <span>🥤 Beverages</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Why Choose <span>FoodieHub?</span></h2>
+          <p>Everything you need for a great meal, in a few clicks</p>
+        </div>
+        <div class="features">
+          <div class="feature-card reveal">
+            <div class="feature-icon">🚀</div>
+            <h3>Fast Delivery</h3>
+            <p class="text-muted">Hot food at your doorstep within 30 minutes.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🥗</div>
+            <h3>Fresh Ingredients</h3>
+            <p class="text-muted">Prepared daily with hygienic, quality ingredients.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">💳</div>
+            <h3>Easy Payments</h3>
+            <p class="text-muted">Cash on delivery, UPI, credit and debit cards.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🏷️</div>
+            <h3>Great Offers</h3>
+            <p class="text-muted">Save more with coupon codes on every order.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURED FOODS (filled by app.js) ================= -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Featured <span>Foods</span></h2>
+          <p>Our customers' all-time favourites</p>
+        </div>
+        <div class="product-grid" id="featuredGrid">
+          <!-- Product cards are inserted here by JavaScript -->
+        </div>
+        <div class="text-center" style="margin-top:2rem">
+          <a href="menu.html" class="btn btn-outline">View Full Menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SPECIAL OFFERS ================= -->
+    <section class="section" id="offers" style="padding-top:0">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Special <span>Offers</span></h2>
+          <p>Click a code to copy it, then apply it in your cart</p>
+        </div>
+        <div class="offers">
+          <div class="offer-card o1 reveal">
+            <h3>10% OFF</h3>
+            <p>On every order, no minimum value.</p>
+            <span class="coupon-code" data-code="SAVE10">SAVE10</span>
+          </div>
+          <div class="offer-card o2 reveal">
+            <h3>20% OFF</h3>
+            <p>On orders above ₹499.</p>
+            <span class="coupon-code" data-code="FOOD20">FOOD20</span>
+          </div>
+          <div class="offer-card o3 reveal">
+            <h3>Flat ₹50 OFF</h3>
+            <p>Welcome offer on orders above ₹199.</p>
+            <span class="coupon-code" data-code="WELCOME50">WELCOME50</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CALL TO ACTION ================= -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Hungry? Your next meal is a click away 😋</h2>
+          <p>Browse 30 dishes and drinks across 5 categories and get it delivered hot.</p>
+          <a href="menu.html" class="btn btn-primary">Explore the Menu</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logo.svg" alt=""><span class="logo-text">Foodie<span>Hub</span></span></a>
+        <p>Fresh, tasty food delivered fast. A Semester 3 mini project built with HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="orders.html">My Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="menu.html?category=Pizza">Pizza</a></li>
+          <li><a href="menu.html?category=Burger">Burger</a></li>
+          <li><a href="menu.html?category=Chinese">Chinese</a></li>
+          <li><a href="menu.html?category=South%20Indian">South Indian</a></li>
+          <li><a href="menu.html?category=Beverages">Beverages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 12, MG Road, Pune 411001</li>
+          <li>📞 +91 98765 43210</li>
+          <li>✉️ support@foodiehub.in</li>
+          <li>🕒 10:00 AM – 11:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year">2026</span> FoodieHub &middot; Online Food Ordering System &middot; Semester 3 Mini Project<br>
+      <small>Food photos from Wikimedia Commons under Creative Commons licences &middot; <a href="images/CREDITS.md">Image credits</a></small>
+    </div>
+  </footer>
+
+  <!-- Back to top button (shown by app.js after scrolling) -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

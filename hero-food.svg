@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <circle cx="250" cy="250" r="230" fill="#fff" opacity=".10"/>
+  <circle cx="250" cy="250" r="170" fill="#fff" opacity=".12"/>
+  <g font-family="Segoe UI Emoji, Apple Color Emoji, Noto Color Emoji, sans-serif" text-anchor="middle">
+    <text x="250" y="315" font-size="190">🍕</text>
+    <text x="105" y="170" font-size="90">🍔</text>
+    <text x="400" y="170" font-size="90">🍜</text>
+    <text x="110" y="430" font-size="80">🥤</text>
+    <text x="395" y="430" font-size="80">🫓</text>
+  </g>
+</svg>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  contact.html  -  CONTACT PAGE
+  Online Food Ordering System (Semester 3 Mini Project)
+  Restaurant contact details, opening hours and a validated feedback form.
+  =====================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | FoodieHub</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (JSON.parse(localStorage.getItem("fos_theme")) === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION BAR ================= -->
+  <header class="navbar">
+    <nav class="container nav-container" aria-label="Main navigation">
+      <a href="index.html" class="logo"><img src="images/logo.svg" alt=""><span class="logo-text">Foodie<span>Hub</span></span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <a href="cart.html" class="icon-btn" aria-label="View cart">🛒<span class="cart-count" id="cartCount">0</span></a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>Questions, feedback or bulk orders? We'd love to hear from you</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+        <!-- Contact details -->
+        <div class="panel reveal">
+          <h2>Get in Touch</h2>
+          <ul class="contact-info">
+            <li><span class="ci-icon">📍</span><div><strong>Address</strong><br>12, MG Road, Pune, Maharashtra 411001</div></li>
+            <li><span class="ci-icon">📞</span><div><strong>Phone</strong><br>+91 98765 43210</div></li>
+            <li><span class="ci-icon">✉️</span><div><strong>Email</strong><br>support@foodiehub.in</div></li>
+          </ul>
+          <h3 style="margin-top:1.2rem">🕒 Opening Hours</h3>
+          <table class="hours-table">
+            <tr><td>Monday – Friday</td><td>10:00 AM – 11:00 PM</td></tr>
+            <tr><td>Saturday – Sunday</td><td>09:00 AM – 12:00 AM</td></tr>
+          </table>
+        </div>
+
+        <!-- Feedback form (validated in the inline script below) -->
+        <div class="panel reveal">
+          <h2>Send us a Message</h2>
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cName">Name <span class="req">*</span></label>
+                <input type="text" id="cName" placeholder="Your name">
+                <small class="error-msg"></small>
+              </div>
+              <div class="form-group">
+                <label for="cEmail">Email <span class="req">*</span></label>
+                <input type="email" id="cEmail" placeholder="you@example.com">
+                <small class="error-msg"></small>
+              </div>
+              <div class="form-group full">
+                <label for="cSubject">Subject</label>
+                <select id="cSubject">
+                  <option>General Enquiry</option>
+                  <option>Order Issue</option>
+                  <option>Feedback</option>
+                  <option>Bulk / Party Order</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="cMessage">Message <span class="req">*</span></label>
+                <textarea id="cMessage" placeholder="Write your message (at least 10 characters)"></textarea>
+                <small class="error-msg"></small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:1rem">📨 Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      /* Contact form validation (small, so kept inline on this page) */
+      document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const fields = [
+          { id: "cName", ok: (v) => v.length >= 3, msg: "Please enter at least 3 characters" },
+          { id: "cEmail", ok: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v), msg: "Please enter a valid email" },
+          { id: "cMessage", ok: (v) => v.length >= 10, msg: "Message must be at least 10 characters" },
+        ];
+        let allValid = true;
+        fields.forEach(({ id, ok, msg }) => {
+          const input = document.getElementById(id);
+          const group = input.closest(".form-group");
+          const valid = ok(input.value.trim());
+          group.classList.toggle("invalid", !valid);
+          group.classList.toggle("valid", valid);
+          group.querySelector(".error-msg").textContent = valid ? "" : msg;
+          if (!valid) allValid = false;
+        });
+        if (allValid) {
+          showToast("Thank you! Your message has been sent.", "success");
+          this.reset();
+          this.querySelectorAll(".form-group").forEach((g) => g.classList.remove("valid"));
+        } else {
+          showToast("Please fix the highlighted fields", "error");
+        }
+      });
+    </script>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logo.svg" alt=""><span class="logo-text">Foodie<span>Hub</span></span></a>
+        <p>Fresh, tasty food delivered fast. A Semester 3 mini project built with HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="orders.html">My Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="menu.html?category=Pizza">Pizza</a></li>
+          <li><a href="menu.html?category=Burger">Burger</a></li>
+          <li><a href="menu.html?category=Chinese">Chinese</a></li>
+          <li><a href="menu.html?category=South%20Indian">South Indian</a></li>
+          <li><a href="menu.html?category=Beverages">Beverages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 12, MG Road, Pune 411001</li>
+          <li>📞 +91 98765 43210</li>
+          <li>✉️ support@foodiehub.in</li>
+          <li>🕒 10:00 AM – 11:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year">2026</span> FoodieHub &middot; Online Food Ordering System &middot; Semester 3 Mini Project<br>
+      <small>Food photos from Wikimedia Commons under Creative Commons licences &middot; <a href="images/CREDITS.md">Image credits</a></small>
+    </div>
+  </footer>
+
+  <!-- Back to top button (shown by app.js after scrolling) -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
